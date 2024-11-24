@@ -1,0 +1,9 @@
+{
+  "name": "e-learning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lola-emil/e-learning.git",
+  "author": "lola-emil <staleexam19@gmail.com>",
+  "license": "Apache 2.0",
+  "private": true
+}
