@@ -1,8 +1,12 @@
-import { PORT } from "./config/environment";
+import { HOSTNAME, PORT } from "./config/environment";
 import http from "http";
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
+import { ErrorResponse } from "./middlewares/errorhandler";
+import Logger from "./utils/logger.util";
+
+import apiRouter from "./api/routes";
 
 
 const app = express();
@@ -12,10 +16,14 @@ app.use(helmet());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-    res.json({
-        message: "Welcome to the API"
-    });
+// Add api routes
+app.use("/api", apiRouter);
+
+app.use("*", (req, res) => {
+    let message = `Can't ${req.method} ${req.originalUrl}`;
+
+    Logger.error(message);
+    throw new ErrorResponse(404, message);
 });
 
-server.listen(PORT, () => console.log(`Server is now running on http://localhost:${PORT}`));
+server.listen(PORT, () =>  Logger.success(`Server running on http://${HOSTNAME}:${PORT}`));
