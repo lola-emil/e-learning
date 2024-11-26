@@ -5,11 +5,17 @@
   "author": "lola-emil <staleexam19@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "tsc -p .",
+    "dev": "concurrently \"yarn build -w\" \"nodemon .\" "
+  },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.9.3",
     "@types/nodemailer": "^6.4.17",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7",
     "typescript": "^5.7.2"
   },
   "dependencies": {
