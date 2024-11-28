@@ -20,7 +20,7 @@ export class ErrorResponse extends Error {
     }
 }
 
-export default function errorHandler(error: Error, req: Request, res: Response, _next: NextFunction) {
+export default function errorHandler(error: Error, req: Request, res: Response, _next: NextFunction): unknown {
 
     if (error instanceof ErrorResponse) {
         const status = (<ErrorResponse>error).status;

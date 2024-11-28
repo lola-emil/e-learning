@@ -1,9 +1,9 @@
 import { HOSTNAME, PORT } from "./config/environment";
 import http from "http";
-import express from "express";
+import express, { ErrorRequestHandler } from "express";
 import helmet from "helmet";
 import cors from "cors";
-import { ErrorResponse } from "./middlewares/errorhandler";
+import errorHandler, { ErrorResponse } from "./middlewares/errorhandler";
 import Logger from "./utils/logger.util";
 
 import apiRouter from "./api/routes";
@@ -25,5 +25,8 @@ app.use("*", (req, res) => {
     Logger.error(message);
     throw new ErrorResponse(404, message);
 });
+
+// Add error handler
+app.use((errorHandler as ErrorRequestHandler))
 
 server.listen(PORT, () =>  Logger.success(`Server running on http://${HOSTNAME}:${PORT}`));
