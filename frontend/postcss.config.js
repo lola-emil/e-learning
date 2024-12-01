@@ -2,7 +2,9 @@
 
 
 module.exports = {
-    taiwindcss: {},
-    autoprefixer: {},
-    cssnano: {}
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+        cssnano: {}
+    }
 }

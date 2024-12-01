@@ -2,4 +2,4 @@ import { NgModule } from "@angular/core";
 
 
 @NgModule()
-class AdminModule {};
+export class AdminModule {};
