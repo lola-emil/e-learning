@@ -32,7 +32,7 @@ export default function errorHandler(error: Error, req: Request, res: Response, 
             data
         });
     } else {
-        Logger.error("Internal Server Error: " + error.message)
+        Logger.error(`Internal Server Error: ${error.name} ${error.message}`)
         return res.status(500).json({
             status: 500,
             message: "Internal Server Error: " + error.message
