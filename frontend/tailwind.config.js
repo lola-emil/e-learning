@@ -10,7 +10,8 @@ module.exports = {
     themes: ["winter"]
   },
   plugins: [
-    require("daisyui")
+    require("daisyui"),
+    require("tailwindcss-motion")
   ],
 }
 
