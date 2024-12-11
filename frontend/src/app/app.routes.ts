@@ -1,29 +1,19 @@
 import { Routes } from '@angular/router';
-import { PageNotFoundComponent } from './shared/views/page-not-found/page-not-found.component';
-import { authGuard } from './middlewares/auth/auth.guard';
+import { LandingPageComponent } from './common/views/landing-page/landing-page.component';
+import { PageNotFoundComponent } from './common/views/page-not-found/page-not-found.component';
+import { AboutPageComponent } from './common/views/about-page/about-page.component';
 
 export const routes: Routes = [
     {
         path: "",
-        loadChildren: () => import("./shared/shared-routing.module").then(m => m.SharedRoutingModule)
-    },
-    {
-        path: "student",
-        loadChildren: () => import("./student/student-routing.module").then(m => m.StudentRoutingModule),
-        data: { roles: ["student"] },
-        canActivate: [authGuard]
+        component: LandingPageComponent
     },
 
     {
-        path: "teacher",
-        loadChildren: () => import("./teacher/teacher-routing.module").then(m => m.TeacherRoutingModule),
-        data: {roles: ["teacher"]},
-        canActivate: [authGuard]
+        path: "about",
+        component: AboutPageComponent
     },
-    {
-        path: "page-not-found",
-        component: PageNotFoundComponent
-    },
+
     {
         path: "**",
         component: PageNotFoundComponent
